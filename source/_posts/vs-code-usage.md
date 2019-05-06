@@ -73,6 +73,9 @@ vs code 开发优质插件推荐
 #### Markdown All in One
 > markdown 编辑预览相关
 
+#### Markdown Preview Github Styling
+> github 的 markdown 样式预览
+
 #### One Dark Pro
 > 非常漂亮的主题
 
