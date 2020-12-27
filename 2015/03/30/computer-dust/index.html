@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="天气一变热，连电脑都开始罢工了，自家笔记本开了几个小时后，主板温度会特别高，如果你是玩游戏的话，那温度都能煮鸡蛋了，话说有一次我玩游戏，手就是这样被烫伤了。 笔记本电脑发热严重主要还是散热不行了，而散热主要的就是笔记本里的风扇，一般情况下，电脑用久了，风扇里都会有积累一层厚厚的灰尘，每隔一段时间帮电脑除除尘，还是能减缓电脑发热严重的，要是给别人除尘估计得花个20-50的样子，那还不如自己动手了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电脑除尘">
+<meta property="og:url" content="http://example.com/2015/03/30/computer-dust/index.html">
+<meta property="og:site_name" content="二十几岁的你">
+<meta property="og:description" content="天气一变热，连电脑都开始罢工了，自家笔记本开了几个小时后，主板温度会特别高，如果你是玩游戏的话，那温度都能煮鸡蛋了，话说有一次我玩游戏，手就是这样被烫伤了。 笔记本电脑发热严重主要还是散热不行了，而散热主要的就是笔记本里的风扇，一般情况下，电脑用久了，风扇里都会有积累一层厚厚的灰尘，每隔一段时间帮电脑除除尘，还是能减缓电脑发热严重的，要是给别人除尘估计得花个20-50的样子，那还不如自己动手了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/image/2015/03/computer-dust/step2.jpg">
+<meta property="og:image" content="http://example.com/image/2015/03/computer-dust/step3.jpg">
+<meta property="og:image" content="http://example.com/image/2015/03/computer-dust/step4.jpg">
+<meta property="og:image" content="http://example.com/image/2015/03/computer-dust/step5.jpg">
+<meta property="og:image" content="http://example.com/image/2015/03/computer-dust/step6.jpg">
+<meta property="og:image" content="http://example.com/image/2015/03/computer-dust/step7.jpg">
+<meta property="og:image" content="http://example.com/image/2015/03/computer-dust/step8.jpg">
+<meta property="og:image" content="http://example.com/image/2015/03/computer-dust/step9.jpg">
+<meta property="article:published_time" content="2015-03-30T08:40:46.000Z">
+<meta property="article:modified_time" content="2020-12-27T07:58:04.735Z">
+<meta property="article:author" content="Russell Mars">
+<meta property="article:tag" content="除尘">
+<meta property="article:tag" content="笔记本">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/2015/03/computer-dust/step2.jpg">
+
+
+<link rel="canonical" href="http://example.com/2015/03/30/computer-dust/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>电脑除尘 | 二十几岁的你</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">二十几岁的你</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有梦想，何必远方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Russell Mars"
+      src="/image/picture/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Russell Mars</p>
+  <div class="site-description" itemprop="description">世界很美，而你正好有空！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/russellmars" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;russellmars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2015/03/30/computer-dust/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/image/picture/avatar.jpg">
+      <meta itemprop="name" content="Russell Mars">
+      <meta itemprop="description" content="世界很美，而你正好有空！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二十几岁的你">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          电脑除尘
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2015-03-30 16:40:46" itemprop="dateCreated datePublished" datetime="2015-03-30T16:40:46+08:00">2015-03-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-27 15:58:04" itemprop="dateModified" datetime="2020-12-27T15:58:04+08:00">2020-12-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9D%82%E8%B4%A7%E9%93%BA/" itemprop="url" rel="index"><span itemprop="name">杂货铺</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>天气一变热，连电脑都开始罢工了，自家笔记本开了几个小时后，主板温度会特别高，如果你是玩游戏的话，那温度都能煮鸡蛋了，话说有一次我玩游戏，手就是这样被烫伤了。</p>
+<p>笔记本电脑发热严重主要还是散热不行了，而散热主要的就是笔记本里的风扇，一般情况下，电脑用久了，风扇里都会有积累一层厚厚的灰尘，每隔一段时间帮电脑除除尘，还是能减缓电脑发热严重的，要是给别人除尘估计得花个20-50的样子，那还不如自己动手了。</p>
+<p>下面我说说我除尘时的拆机步骤，我的笔记本电脑是型号：宏碁4750G</p>
+<a id="more"></a>
+
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>  螺丝刀（有一套最好，十字的，平口的都需要）</li>
+<li>  盒子（用来装螺丝，最好准备多个，并按拆机的顺序把卸下来的螺丝都排好序）</li>
+<li>  刷子，抹布</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>拆机时，确定已经关机。将笔记本翻转到背面，把电池卸下来</li>
+<li>把背部的12颗螺丝都卸下来，还有电池槽里的3颗螺丝也卸下来，然后就可以把下面的塑料外壳拿下来了，光驱也可以抽出来。<img src="/image/2015/03/computer-dust/step2.jpg" alt="step2"></li>
+<li>把箭头位置的螺丝卸下来，可以向左抽出硬盘来；把圆圈位置的螺丝卸下来；将无线网卡的两根线轻轻拔下来。<img src="/image/2015/03/computer-dust/step3.jpg" alt="step3"></li>
+<li>接下来就是拆键盘了，键盘靠近屏幕那里有5个卡扣，用扁口螺丝刀从左往右依次将这5个卡扣向里按下，同时将键盘向上抬起，然后轻轻抽出来，注意键盘下面还有连接线的，把黑色的卡子往上掰就能把线抽出来。<img src="/image/2015/03/computer-dust/step4.jpg" alt="step4"></li>
+<li>那上面的两根线都把之前的方法拔出来，还有这个螺丝也拧下来。<img src="/image/2015/03/computer-dust/step5.jpg" alt="step5"></li>
+<li>然后就可以直接把前面的整个塑料外壳撬开了。<img src="/image/2015/03/computer-dust/step6.jpg" alt="step6"></li>
+<li>之后可以看到整个主板了，那圆圈位置的螺丝钉拧开，右下角的线也找之前的方法拔出来，就可以把主板翻过来了（还连着电源线，不能直接取出主板）。<img src="/image/2015/03/computer-dust/step7.jpg" alt="step7"></li>
+<li>主板翻过来之后可以看到风扇了，将标记的这几颗螺丝拧松（取不下来的），然后就可以把散热片连着风扇整个取出来。<img src="/image/2015/03/computer-dust/step8.jpg" alt="step8"></li>
+<li>除尘的关键就是风扇了的灰尘，把风扇的螺丝也拧下来，把风扇掰开，然后除尘了，用刷子或者其他的东西清理一下。<img src="/image/2015/03/computer-dust/step9.jpg" alt="step9"></li>
+<li>按顺序把电脑再原样装回去，注意螺丝钉和线不要忘记了。</li>
+</ol>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li>  <a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/656db91886086be380249c6e.html">宏基4750g拆机教程</a></li>
+<li>  <a target="_blank" rel="noopener" href="http://tieba.baidu.com/p/1810567689">洗洗更健康，实拍拆机教程，Acer4750g除尘</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%99%A4%E5%B0%98/" rel="tag"># 除尘</a>
+              <a href="/tags/%E7%AC%94%E8%AE%B0%E6%9C%AC/" rel="tag"># 笔记本</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015/03/18/dream-toWestbrook/" rel="prev" title="给最叼的威少">
+                  <i class="fa fa-chevron-left"></i> 给最叼的威少
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015/03/31/java-websocket-chatroom/" rel="next" title="Java和websocket实现网页聊天室">
+                  Java和websocket实现网页聊天室 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Russell Mars</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

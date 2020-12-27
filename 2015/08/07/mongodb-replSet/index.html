@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="以下环境在CentOS 64-bit虚拟机中验证通过，测试时有些命令是需要root权限的，并且我把虚拟机中的防火墙关了，然后我可以再我的宿主机中用java通过mongodb的驱动访问访问虚拟机中的ip的端口。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb replica set 搭建">
+<meta property="og:url" content="http://example.com/2015/08/07/mongodb-replSet/index.html">
+<meta property="og:site_name" content="二十几岁的你">
+<meta property="og:description" content="以下环境在CentOS 64-bit虚拟机中验证通过，测试时有些命令是需要root权限的，并且我把虚拟机中的防火墙关了，然后我可以再我的宿主机中用java通过mongodb的驱动访问访问虚拟机中的ip的端口。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-08-07T01:28:09.000Z">
+<meta property="article:modified_time" content="2020-12-27T07:59:48.017Z">
+<meta property="article:author" content="Russell Mars">
+<meta property="article:tag" content="mongodb">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2015/08/07/mongodb-replSet/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>mongodb replica set 搭建 | 二十几岁的你</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">二十几岁的你</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有梦想，何必远方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">防火墙的相关方法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongodb-replSet-%E6%90%AD%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">mongodb replSet 搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E6%94%BE%E7%9B%AE%E5%BD%95"><span class="nav-number">2.1.</span> <span class="nav-text">创建数据库存放目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8mongod"><span class="nav-number">2.2.</span> <span class="nav-text">启动mongod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%9B%86%E7%BE%A4%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">2.3.</span> <span class="nav-text">初始化集群的信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81replica-set"><span class="nav-number">3.</span> <span class="nav-text">验证replica set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%9B%86%E7%BE%A4%E7%8A%B6%E6%80%81"><span class="nav-number">3.1.</span> <span class="nav-text">查看集群状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E9%AA%8C%E8%AF%81"><span class="nav-number">3.2.</span> <span class="nav-text">读写验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB%E6%B5%8B%E8%AF%95"><span class="nav-number">3.3.</span> <span class="nav-text">故障转移测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%9B%86%E7%BE%A4%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">3.4.</span> <span class="nav-text">查看集群的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Russell Mars"
+      src="/image/picture/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Russell Mars</p>
+  <div class="site-description" itemprop="description">世界很美，而你正好有空！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/russellmars" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;russellmars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2015/08/07/mongodb-replSet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/image/picture/avatar.jpg">
+      <meta itemprop="name" content="Russell Mars">
+      <meta itemprop="description" content="世界很美，而你正好有空！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二十几岁的你">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mongodb replica set 搭建
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2015-08-07 09:28:09" itemprop="dateCreated datePublished" datetime="2015-08-07T09:28:09+08:00">2015-08-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-27 15:59:48" itemprop="dateModified" datetime="2020-12-27T15:59:48+08:00">2020-12-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/mongodb/" itemprop="url" rel="index"><span itemprop="name">mongodb</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>以下环境在CentOS 64-bit虚拟机中验证通过，测试时有些命令是需要root权限的，并且我把虚拟机中的防火墙关了，然后我可以再我的宿主机中用java通过mongodb的驱动访问访问虚拟机中的ip的端口。</p>
+<a id="more"></a>
+<h2 id="防火墙的相关方法："><a href="#防火墙的相关方法：" class="headerlink" title="防火墙的相关方法："></a>防火墙的相关方法：</h2><p>service iptables status可以查看到iptables服务的当前状态<br>重启后生效<br>开启： chkconfig iptables on<br>关闭： chkconfig iptables off<br>即时生效，重启后失效<br>开启： service iptables start<br>关闭： service iptables stop </p>
+<h2 id="mongodb-replSet-搭建"><a href="#mongodb-replSet-搭建" class="headerlink" title="mongodb replSet 搭建"></a>mongodb replSet 搭建</h2><h3 id="创建数据库存放目录"><a href="#创建数据库存放目录" class="headerlink" title="创建数据库存放目录"></a>创建数据库存放目录</h3><p>建立复制集群节点的数据存放目录<br>mkdir -p /opt/mongodata/r1<br>mkdir -p /opt/mongodata/r2<br>mkdir -p /opt/mongodata/r3</p>
+<h3 id="启动mongod"><a href="#启动mongod" class="headerlink" title="启动mongod"></a>启动mongod</h3><p>在mongodb目录下分别打开3个终端，执行如下命令：<br>bin/mongod –dbpath /opt/mongodata/r1 –port 27018 –rest –replSet myset<br>bin/mongod –dbpath /opt/mongodata/r2 –port 27019 –rest –replSet myset<br>bin/mongod –dbpath /opt/mongodata/r3 –port 27020 –rest –replSet myset</p>
+<h3 id="初始化集群的信息"><a href="#初始化集群的信息" class="headerlink" title="初始化集群的信息"></a>初始化集群的信息</h3><p>在打开一个终端，执行如下命令<br>bin/mongo 127.0.0.1:27018 init.js<br>init.js的内容如下：<br>rs.initiate({<br>    _id : “myset”,<br>    members : [<br>        {_id : 0, host : “192.168.126.128:27018”,priority:3},<br>        {_id : 1, host : “192.168.126.128:27019”,priority:2},<br>        {_id : 2, host : “192.168.126.128:27020”,priority:1}<br>    ]<br>})</p>
+<p>此时已经建立了replica set 的集群部署</p>
+<h2 id="验证replica-set"><a href="#验证replica-set" class="headerlink" title="验证replica set"></a>验证replica set</h2><h3 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h3><p>打开终端，连接集群中的其中一个节点<br>bin/mongo 127.0.0.1:27018</p>
+<p>myset:PRIMARY&gt; rs.status()<br>{<br>    “set” : “myset”,<br>    “date” : ISODate(“2015-08-06T14:32:39.525Z”),<br>    “myState” : 1,<br>    “members” : [<br>        {<br>            “_id” : 0,<br>            “name” : “192.168.126.128:27018”,<br>            “health” : 1,<br>            “state” : 2,<br>            “stateStr” : “SECONDARY”,<br>            “uptime” : 37,<br>            “optime” : Timestamp(1438861784, 2),<br>            “optimeDate” : ISODate(“2015-08-06T11:49:44Z”),<br>            “lastHeartbeat” : ISODate(“2015-08-06T14:32:38.524Z”),<br>            “lastHeartbeatRecv” : ISODate(“2015-08-06T14:32:38.194Z”),<br>            “pingMs” : 0,<br>            “configVersion” : 1<br>        },<br>        {<br>            “_id” : 1,<br>            “name” : “192.168.126.128:27019”,<br>            “health” : 1,<br>            “state” : 2,<br>            “stateStr” : “SECONDARY”,<br>            “uptime” : 11034,<br>            “optime” : Timestamp(1438861784, 2),<br>            “optimeDate” : ISODate(“2015-08-06T11:49:44Z”),<br>            “lastHeartbeat” : ISODate(“2015-08-06T14:32:37.742Z”),<br>            “lastHeartbeatRecv” : ISODate(“2015-08-06T14:32:37.749Z”),<br>            “pingMs” : 0,<br>            “configVersion” : 1<br>        },<br>        {<br>            “_id” : 2,<br>            “name” : “192.168.126.128:27020”,<br>            “health” : 1,<br>            “state” : 1,<br>            “stateStr” : “PRIMARY”,<br>            “uptime” : 12788,<br>            “optime” : Timestamp(1438861784, 2),<br>            “optimeDate” : ISODate(“2015-08-06T11:49:44Z”),<br>            “electionTime” : Timestamp(1438871418, 1),<br>            “electionDate” : ISODate(“2015-08-06T14:30:18Z”),<br>            “configVersion” : 1,<br>            “self” : true<br>        }<br>    ],<br>    “ok” : 1<br>}</p>
+<p>state：1表示该host是当前可以进行读写，2：不能读写<br>health：1表示该host目前是正常的，0:异常</p>
+<p>查看是否是主库的命令<br>myset:PRIMARY&gt; db.isMaster()<br>{<br>    “setName” : “myset”,<br>    “setVersion” : 1,<br>    “ismaster” : true,<br>    “secondary” : false,<br>    “hosts” : [<br>        “192.168.126.128:27018”,<br>        “192.168.126.128:27019”,<br>        “192.168.126.128:27020”<br>    ],<br>    “primary” : “192.168.126.128:27020”,<br>    “me” : “192.168.126.128:27020”,<br>    “electionId” : ObjectId(“55c36f7af1cf2b97bc876d6a”),<br>    “maxBsonObjectSize” : 16777216,<br>    “maxMessageSizeBytes” : 48000000,<br>    “maxWriteBatchSize” : 1000,<br>    “localTime” : ISODate(“2015-08-06T14:54:18.977Z”),<br>    “maxWireVersion” : 3,<br>    “minWireVersion” : 0,<br>    “ok” : 1<br>}</p>
+<h3 id="读写验证"><a href="#读写验证" class="headerlink" title="读写验证"></a>读写验证</h3><p>默认情况下，主库可以读写，从库无法读写<br>主库（primary）：<br>写：<br>myset:PRIMARY&gt; db.person.insert({name:”katy”,age:30})<br>WriteResult({ “nInserted” : 1 })<br>读：<br>myset:PRIMARY&gt; db.person.find()<br>{ “_id” : ObjectId(“55c375f0b31a759cb89eeb05”), “name” : “katy”, “age” : 30 }<br>从库（secondary）：<br>写：<br>myset:SECONDARY&gt; db.person.insert({name:”mars”,age:33})<br>WriteResult({ “writeError” : { “code” : undefined, “errmsg” : “not master” } })<br>读：<br>myset:SECONDARY&gt; db.person.find()<br>Error: error: { “$err” : “not master and slaveOk=false”, “code” : 13435 }</p>
+<p>设置从库可读（在连接从库的终端中执行）<br>myset:SECONDARY&gt; db.getMongo().setSlaveOk()<br>验证：<br>myset:SECONDARY&gt; db.person.find()<br>{ “_id” : ObjectId(“55c349d7cb6cfe2ee4fcf613”), “name” : “mars”, “age” : 33 }<br>{ “_id” : ObjectId(“55c375f0b31a759cb89eeb05”), “name” : “katy”, “age” : 30 }</p>
+<h3 id="故障转移测试"><a href="#故障转移测试" class="headerlink" title="故障转移测试"></a>故障转移测试</h3><p>之前集群时的设置如下：<br>members : [<br>        {_id : 0, host : “192.168.126.128:27018”,priority :3},<br>        {_id : 1, host : “192.168.126.128:27019”,priority :2},<br>        {_id : 2, host : “192.168.126.128:27020”,priority :1}<br>    ]<br>服务开启后，<br>27018的节点成为primary，其他的为secondary<br>kill27018后，27019成为primary<br>启动27018后，27018依然是primary,27019成为secondary</p>
+<h3 id="查看集群的配置"><a href="#查看集群的配置" class="headerlink" title="查看集群的配置"></a>查看集群的配置</h3><p>rs.config()<br>如果要修改集群中节点的优先级，则必须在primary进程的客户端中设置如下：<br>myset:PRIMARY&gt; config = rs.conf()<br>myset:PRIMARY&gt; config.members[0].priority = 3<br>myset:PRIMARY&gt; rs.reconfig(config)</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>【Mongodb】如何创建mongodb的replica set（<a target="_blank" rel="noopener" href="http://blog.itpub.net/22664653/viewspace-710004/%EF%BC%89">http://blog.itpub.net/22664653/viewspace-710004/）</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015/07/30/mongodb-start/" rel="prev" title="mongodb初接触">
+                  <i class="fa fa-chevron-left"></i> mongodb初接触
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015/08/07/mongodb-Master-Slaver/" rel="next" title="mongodb的Master-Slaver集群的搭建">
+                  mongodb的Master-Slaver集群的搭建 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Russell Mars</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

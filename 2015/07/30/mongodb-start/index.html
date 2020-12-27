@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="最近，因为项目需求，需要使用到mongodb，不是项目还没有开始，要我自学mongodb，所以自己搞了几天后，发现还是有些收获，也是打算记录下来，以备不时之需。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb初接触">
+<meta property="og:url" content="http://example.com/2015/07/30/mongodb-start/index.html">
+<meta property="og:site_name" content="二十几岁的你">
+<meta property="og:description" content="最近，因为项目需求，需要使用到mongodb，不是项目还没有开始，要我自学mongodb，所以自己搞了几天后，发现还是有些收获，也是打算记录下来，以备不时之需。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-07-30T13:00:24.000Z">
+<meta property="article:modified_time" content="2020-12-27T07:59:51.785Z">
+<meta property="article:author" content="Russell Mars">
+<meta property="article:tag" content="mongodb">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2015/07/30/mongodb-start/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>mongodb初接触 | 二十几岁的你</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">二十几岁的你</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有梦想，何必远方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">下载和安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">3.1.</span> <span class="nav-text">数据库文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8mongodb"><span class="nav-number">3.2.</span> <span class="nav-text">启动mongodb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="nav-number">3.3.</span> <span class="nav-text">检查是否成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%BAwindows%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.4.</span> <span class="nav-text">安装为windows服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8"><span class="nav-number">4.</span> <span class="nav-text">简单入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert"><span class="nav-number">4.1.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">4.2.</span> <span class="nav-text">update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove"><span class="nav-number">4.3.</span> <span class="nav-text">remove</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">4.4.</span> <span class="nav-text">find</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Russell Mars"
+      src="/image/picture/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Russell Mars</p>
+  <div class="site-description" itemprop="description">世界很美，而你正好有空！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/russellmars" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;russellmars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2015/07/30/mongodb-start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/image/picture/avatar.jpg">
+      <meta itemprop="name" content="Russell Mars">
+      <meta itemprop="description" content="世界很美，而你正好有空！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二十几岁的你">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mongodb初接触
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2015-07-30 21:00:24" itemprop="dateCreated datePublished" datetime="2015-07-30T21:00:24+08:00">2015-07-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-27 15:59:51" itemprop="dateModified" datetime="2020-12-27T15:59:51+08:00">2020-12-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/mongodb/" itemprop="url" rel="index"><span itemprop="name">mongodb</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近，因为项目需求，需要使用到mongodb，不是项目还没有开始，要我自学mongodb，所以自己搞了几天后，发现还是有些收获，也是打算记录下来，以备不时之需。</p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先mongodb是什么东西，优缺点什么的，我就不说了，关系型数据库大家都用过吧。这里要说的mongodb呢，有3个元素：数据库，集合，文档。数据库对应表，文档对应行。大概是这么对应的，但是具体还是有很大的差别的，大家用了就知道。</p>
+<h2 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h2><p>下载的话一般是去<a target="_blank" rel="noopener" href="https://www.mongodb.org/downloads">mongodb官网</a>上去下载，根据自己的系统，下载一个最新的版本就行了，一般来说偶数为“稳定版”（如：1.6.X，1.8.X），奇数为“开发版”（如：1.7.X，1.9.X)，并且如果下载的事32位的版本的话，只能存放2g的数据，所以64位的系统比较适合mongodb吧。<br>安装的话基本就是next就好了，可以修改mongodb的安装目录的，我的安装目录是<br><code>D:\software\MongoDB\Server\3.4</code></p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><h3 id="数据库文件夹"><a href="#数据库文件夹" class="headerlink" title="数据库文件夹"></a>数据库文件夹</h3><p>启动mongodb是需要指定一个数据库文件存放的目录的，所以我们需要新建一个数据库存放的目录(如：D:\mongodb\data)。</p>
+<h3 id="启动mongodb"><a href="#启动mongodb" class="headerlink" title="启动mongodb"></a>启动mongodb</h3><p>打开我们的命令行，来到安装目录下的bin文件夹中，我们输入命令<br><code>mongod --dbpath=D:\mongodb\data</code>.</p>
+<h3 id="检查是否成功"><a href="#检查是否成功" class="headerlink" title="检查是否成功"></a>检查是否成功</h3><p>一般来说我的的mongodb就已经启成功了，如果一定要检查以下是否启动成功的话，我们可以打开浏览器，输入网址<code>http://localhost:27017/</code>，如果有信息，就算启动成功了。</p>
+<h3 id="安装为windows服务"><a href="#安装为windows服务" class="headerlink" title="安装为windows服务"></a>安装为windows服务</h3><p>首先新建一个config文件 <code>D:\software\MongoDB\Server\3.4\mongod.config</code>，内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dbpath&#x3D;D:\mongodb\data\db</span><br><span class="line">logpath&#x3D;D:\mongodb\data\log\mongodb.log</span><br></pre></td></tr></table></figure>
+<p>然后有两种方式安装</p>
+<ul>
+<li>用mongod安装服务<br>首先以管理员身份运行cmd，cd到mongo的安装目录下的bin目录下，然后运行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --config D:\software\MongoDB\Server\3.4\mongod.config --install</span><br></pre></td></tr></table></figure></li>
+<li>使用sc安装服务<br>首先以管理员身份运行cmd<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc create MongoDB binPath&#x3D; &quot;D:\software\MongoDB\Server\3.4\bin\mongod.exe --service --config&#x3D;D:\software\MongoDB\Server\3.4\mongod.config&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="简单入门"><a href="#简单入门" class="headerlink" title="简单入门"></a>简单入门</h2>一般来说，对一个数据库的操作就是_增删改查_，首先我们也是用命令行进行一些简单的操作，首先在打开一个cmd，然后来到mongodb的bin目录，输入命令<code>mongo</code>，这样就连上了mongodb自带的test数据库了，然后会进入mongo的shell命令模式。<h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3>输入如下命令，可插入一个文档<br><code>db.user.insert(&#123;name:&quot;mars&quot;,age:30&#125;)</code><h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3>输入如下命令，可修改文档，第一个参数是查询条件，第二个参数是修改后的文档<br><code>db.user.update(&#123;name:&quot;mars&quot;&#125;,&#123;name:&quot;mars&quot;,age:35&#125;)</code><h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3>输入如下命令，可删除文档<br><code>db.user.remove(&#123;name:&quot;mars&quot;&#125;)</code><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3>输入如下命令，可查找文档<br><code>db.user.find(&#123;name:&quot;mars&quot;&#125;)</code></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上面的步骤都做完了的话，对mongodb也有一个大概的了解了，想深入学习的话，还是要下些功夫的。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015/07/03/quit-job/" rel="prev" title="离职时需注意的事项">
+                  <i class="fa fa-chevron-left"></i> 离职时需注意的事项
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015/08/07/mongodb-replSet/" rel="next" title="mongodb replica set 搭建">
+                  mongodb replica set 搭建 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Russell Mars</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

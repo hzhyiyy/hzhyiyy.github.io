@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="vs code 开发优质插件推荐">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vs code 使用">
+<meta property="og:url" content="http://example.com/2018/06/27/vs-code-usage/index.html">
+<meta property="og:site_name" content="二十几岁的你">
+<meta property="og:description" content="vs code 开发优质插件推荐">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-27T03:21:48.000Z">
+<meta property="article:modified_time" content="2019-05-06T13:19:22.731Z">
+<meta property="article:author" content="Russell Mars">
+<meta property="article:tag" content="vs code">
+<meta property="article:tag" content="editor">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2018/06/27/vs-code-usage/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>vs code 使用 | 二十几岁的你</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">二十几岁的你</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有梦想，何必远方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vs-code-%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="nav-number">1.</span> <span class="nav-text">vs code 插件推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Auto-Close-Tag"><span class="nav-number">1.1.</span> <span class="nav-text">Auto Close Tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Auto-Rename-Tag"><span class="nav-number">1.2.</span> <span class="nav-text">Auto Rename Tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bookmarks"><span class="nav-number">1.3.</span> <span class="nav-text">Bookmarks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bracket-Pair-Colorizer"><span class="nav-number">1.4.</span> <span class="nav-text">Bracket Pair Colorizer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#code-Runner"><span class="nav-number">1.5.</span> <span class="nav-text">code Runner</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-Spell-Checker"><span class="nav-number">1.6.</span> <span class="nav-text">Code Spell Checker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dart"><span class="nav-number">1.7.</span> <span class="nav-text">Dart</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Debugger-for-Chrome"><span class="nav-number">1.8.</span> <span class="nav-text">Debugger for Chrome</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker"><span class="nav-number">1.9.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EditorConfig-for-VS-Code"><span class="nav-number">1.10.</span> <span class="nav-text">EditorConfig for VS Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ESLint"><span class="nav-number">1.11.</span> <span class="nav-text">ESLint</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flutter"><span class="nav-number">1.12.</span> <span class="nav-text">Flutter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Git-History"><span class="nav-number">1.13.</span> <span class="nav-text">Git History</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gitignore"><span class="nav-number">1.14.</span> <span class="nav-text">gitignore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Go"><span class="nav-number">1.15.</span> <span class="nav-text">Go</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-CSS-Support"><span class="nav-number">1.16.</span> <span class="nav-text">HTML CSS Support</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-Snippets"><span class="nav-number">1.17.</span> <span class="nav-text">HTML Snippets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript-ES6-code-snippets"><span class="nav-number">1.18.</span> <span class="nav-text">JavaScript(ES6) code snippets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Live-Server"><span class="nav-number">1.19.</span> <span class="nav-text">Live Server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-History"><span class="nav-number">1.20.</span> <span class="nav-text">Local History</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markdown-All-in-One"><span class="nav-number">1.21.</span> <span class="nav-text">Markdown All in One</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markdown-Preview-Github-Styling"><span class="nav-number">1.22.</span> <span class="nav-text">Markdown Preview Github Styling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#One-Dark-Pro"><span class="nav-number">1.23.</span> <span class="nav-text">One Dark Pro</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-Intellisense"><span class="nav-number">1.24.</span> <span class="nav-text">Path Intellisense</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prettier-Code-formatter"><span class="nav-number">1.25.</span> <span class="nav-text">Prettier - Code formatter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python"><span class="nav-number">1.26.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Settings-Sync"><span class="nav-number">1.27.</span> <span class="nav-text">Settings Sync</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TODO-Highlight"><span class="nav-number">1.28.</span> <span class="nav-text">TODO Highlight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vetur"><span class="nav-number">1.29.</span> <span class="nav-text">Vetur</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode-wxml"><span class="nav-number">1.30.</span> <span class="nav-text">vscode wxml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">用户设置</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Russell Mars"
+      src="/image/picture/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Russell Mars</p>
+  <div class="site-description" itemprop="description">世界很美，而你正好有空！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/russellmars" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;russellmars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/06/27/vs-code-usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/image/picture/avatar.jpg">
+      <meta itemprop="name" content="Russell Mars">
+      <meta itemprop="description" content="世界很美，而你正好有空！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二十几岁的你">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vs code 使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-06-27 11:21:48" itemprop="dateCreated datePublished" datetime="2018-06-27T11:21:48+08:00">2018-06-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-05-06 21:19:22" itemprop="dateModified" datetime="2019-05-06T21:19:22+08:00">2019-05-06</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>vs code 开发优质插件推荐</p>
+<a id="more"></a>
+
+<h3 id="vs-code-插件推荐"><a href="#vs-code-插件推荐" class="headerlink" title="vs code 插件推荐"></a>vs code 插件推荐</h3><h4 id="Auto-Close-Tag"><a href="#Auto-Close-Tag" class="headerlink" title="Auto Close Tag"></a>Auto Close Tag</h4><blockquote>
+<p>自动关闭html标签</p>
+</blockquote>
+<h4 id="Auto-Rename-Tag"><a href="#Auto-Rename-Tag" class="headerlink" title="Auto Rename Tag"></a>Auto Rename Tag</h4><blockquote>
+<p>重命名html标签</p>
+</blockquote>
+<h4 id="Bookmarks"><a href="#Bookmarks" class="headerlink" title="Bookmarks"></a>Bookmarks</h4><blockquote>
+<p>给文件加书签/标记</p>
+</blockquote>
+<h4 id="Bracket-Pair-Colorizer"><a href="#Bracket-Pair-Colorizer" class="headerlink" title="Bracket Pair Colorizer"></a>Bracket Pair Colorizer</h4><blockquote>
+<p>用不同的颜色标记嵌套括号</p>
+</blockquote>
+<h4 id="code-Runner"><a href="#code-Runner" class="headerlink" title="code Runner"></a>code Runner</h4><blockquote>
+<p>运行不同语言的代码</p>
+</blockquote>
+<h4 id="Code-Spell-Checker"><a href="#Code-Spell-Checker" class="headerlink" title="Code Spell Checker"></a>Code Spell Checker</h4><blockquote>
+<p>代码单词拼写检查</p>
+</blockquote>
+<h4 id="Dart"><a href="#Dart" class="headerlink" title="Dart"></a>Dart</h4><blockquote>
+<p>Dart 语言支持</p>
+</blockquote>
+<h4 id="Debugger-for-Chrome"><a href="#Debugger-for-Chrome" class="headerlink" title="Debugger for Chrome"></a>Debugger for Chrome</h4><blockquote>
+<p>可在chrome里调试</p>
+</blockquote>
+<h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><blockquote>
+<p>Docker相关支持插件</p>
+</blockquote>
+<h4 id="EditorConfig-for-VS-Code"><a href="#EditorConfig-for-VS-Code" class="headerlink" title="EditorConfig for VS Code"></a>EditorConfig for VS Code</h4><blockquote>
+<p>editorConfig 插件</p>
+</blockquote>
+<h4 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h4><blockquote>
+<p>eslint 代码检查</p>
+</blockquote>
+<h4 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h4><blockquote>
+<p>Flutter开发</p>
+</blockquote>
+<h4 id="Git-History"><a href="#Git-History" class="headerlink" title="Git History"></a>Git History</h4><blockquote>
+<p>git 历史纪录查询</p>
+</blockquote>
+<h4 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h4><blockquote>
+<p>.gitignore文件支持</p>
+</blockquote>
+<h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><blockquote>
+<p>Go 语言支持</p>
+</blockquote>
+<h4 id="HTML-CSS-Support"><a href="#HTML-CSS-Support" class="headerlink" title="HTML CSS Support"></a>HTML CSS Support</h4><blockquote>
+<p>html css 开发相关</p>
+</blockquote>
+<h4 id="HTML-Snippets"><a href="#HTML-Snippets" class="headerlink" title="HTML Snippets"></a>HTML Snippets</h4><blockquote>
+<p>html 代码片段</p>
+</blockquote>
+<h4 id="JavaScript-ES6-code-snippets"><a href="#JavaScript-ES6-code-snippets" class="headerlink" title="JavaScript(ES6) code snippets"></a>JavaScript(ES6) code snippets</h4><blockquote>
+<p>es6 代码片段</p>
+</blockquote>
+<h4 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h4><blockquote>
+<p>支持live reload 的本地开发服务器</p>
+</blockquote>
+<h4 id="Local-History"><a href="#Local-History" class="headerlink" title="Local History"></a>Local History</h4><blockquote>
+<p>本地文件的历史纪录，会在当前的项目目录下生成<code>.history</code>目录</p>
+</blockquote>
+<h4 id="Markdown-All-in-One"><a href="#Markdown-All-in-One" class="headerlink" title="Markdown All in One"></a>Markdown All in One</h4><blockquote>
+<p>markdown 编辑预览相关</p>
+</blockquote>
+<h4 id="Markdown-Preview-Github-Styling"><a href="#Markdown-Preview-Github-Styling" class="headerlink" title="Markdown Preview Github Styling"></a>Markdown Preview Github Styling</h4><blockquote>
+<p>github 的 markdown 样式预览</p>
+</blockquote>
+<h4 id="One-Dark-Pro"><a href="#One-Dark-Pro" class="headerlink" title="One Dark Pro"></a>One Dark Pro</h4><blockquote>
+<p>非常漂亮的主题</p>
+</blockquote>
+<h4 id="Path-Intellisense"><a href="#Path-Intellisense" class="headerlink" title="Path Intellisense"></a>Path Intellisense</h4><blockquote>
+<p>文件路径提示</p>
+</blockquote>
+<h4 id="Prettier-Code-formatter"><a href="#Prettier-Code-formatter" class="headerlink" title="Prettier - Code formatter"></a>Prettier - Code formatter</h4><blockquote>
+<p>prettier 格式化插件</p>
+</blockquote>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><blockquote>
+<p>python 语言支持</p>
+</blockquote>
+<h4 id="Settings-Sync"><a href="#Settings-Sync" class="headerlink" title="Settings Sync"></a>Settings Sync</h4><blockquote>
+<p>设置同步</p>
+</blockquote>
+<h4 id="TODO-Highlight"><a href="#TODO-Highlight" class="headerlink" title="TODO Highlight"></a>TODO Highlight</h4><blockquote>
+<p>高亮注释里的TODO/FIXME</p>
+</blockquote>
+<h4 id="Vetur"><a href="#Vetur" class="headerlink" title="Vetur"></a>Vetur</h4><blockquote>
+<p>vue 开发插件</p>
+</blockquote>
+<h4 id="vscode-wxml"><a href="#vscode-wxml" class="headerlink" title="vscode wxml"></a>vscode wxml</h4><blockquote>
+<p>小程序.wxml文件支持</p>
+</blockquote>
+<h3 id="用户设置"><a href="#用户设置" class="headerlink" title="用户设置"></a>用户设置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;terminal.integrated.shell.windows&quot;</span>: <span class="string">&quot;D:\\app\\git\\bin\\bash.exe&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;editor.tabSize&quot;</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">&quot;editor.fontSize&quot;</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">&quot;editor.fontFamily&quot;</span>: <span class="string">&quot;Source Code Pro, Menlo, Consolas, &#x27;Courier New&#x27;, monospace, Microsoft YaHei UI&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;workbench.colorTheme&quot;</span>: <span class="string">&quot;One Dark Pro&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;javascript.implicitProjectConfig.experimentalDecorators&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;emmet.includeLanguages&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;javascript&quot;</span>: <span class="string">&quot;javascriptreact&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;vue-html&quot;</span>: <span class="string">&quot;html&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;emmet.syntaxProfiles&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;jsx&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;self_closing_tag&quot;</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;files.associations&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;*.wxss&quot;</span>: <span class="string">&quot;css&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;git.enableSmartCommit&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;git.confirmSync&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;git.autofetch&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;eslint.validate&quot;</span>: [ <span class="string">&quot;javascript&quot;</span>, <span class="string">&quot;javascriptreact&quot;</span>, <span class="string">&quot;vue&quot;</span>, &#123; <span class="attr">&quot;language&quot;</span>: <span class="string">&quot;html&quot;</span>, <span class="attr">&quot;autoFix&quot;</span>: <span class="literal">true</span> &#125; ],</span><br><span class="line">    <span class="attr">&quot;liveServer.settings.donotShowInfoMsg&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;markdown.preview.fontFamily&quot;</span>: <span class="string">&quot;Source Code Pro, Menlo, Consolas, &#x27;Courier New&#x27;, monospace, 微软雅黑&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;markdown.preview.breaks&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;markdown.preview.fontSize&quot;</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vs-code/" rel="tag"># vs code</a>
+              <a href="/tags/editor/" rel="tag"># editor</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/06/26/mysql-install/" rel="prev" title="mysql 免安装版">
+                  <i class="fa fa-chevron-left"></i> mysql 免安装版
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/06/29/vue-issues/" rel="next" title="vue 开发遇到的问题">
+                  vue 开发遇到的问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Russell Mars</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

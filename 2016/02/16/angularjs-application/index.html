@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="最近一直在接触angularjs框架，也用这个东西做了一个项目出来，当然纯粹是赶鸭子上架给逼出来的，之前其实也只是接触过knockoutjs这类mvvm框架，以为同样是mvvm框架，上手起来会很快，结果各种踩坑，说多了都是泪。下面我带大家搞一个完整的angularjs项目，以供大家学习参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angularjs 应用">
+<meta property="og:url" content="http://example.com/2016/02/16/angularjs-application/index.html">
+<meta property="og:site_name" content="二十几岁的你">
+<meta property="og:description" content="最近一直在接触angularjs框架，也用这个东西做了一个项目出来，当然纯粹是赶鸭子上架给逼出来的，之前其实也只是接触过knockoutjs这类mvvm框架，以为同样是mvvm框架，上手起来会很快，结果各种踩坑，说多了都是泪。下面我带大家搞一个完整的angularjs项目，以供大家学习参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/image/2016/02/angularjs-application/project-structure.jpg">
+<meta property="og:image" content="http://example.com/image/2016/02/angularjs-application/app-structure.jpg">
+<meta property="article:published_time" content="2016-02-16T05:58:56.000Z">
+<meta property="article:modified_time" content="2020-12-27T07:58:00.091Z">
+<meta property="article:author" content="Russell Mars">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="angularjs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/2016/02/angularjs-application/project-structure.jpg">
+
+
+<link rel="canonical" href="http://example.com/2016/02/16/angularjs-application/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>angularjs 应用 | 二十几岁的你</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">二十几岁的你</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有梦想，何必远方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">前提知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.</span> <span class="nav-text">工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-1"><span class="nav-number">2.</span> <span class="nav-text">step 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step2"><span class="nav-number">3.</span> <span class="nav-text">step2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step3"><span class="nav-number">4.</span> <span class="nav-text">step3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step4"><span class="nav-number">5.</span> <span class="nav-text">step4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step5"><span class="nav-number">6.</span> <span class="nav-text">step5</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Russell Mars"
+      src="/image/picture/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Russell Mars</p>
+  <div class="site-description" itemprop="description">世界很美，而你正好有空！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/russellmars" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;russellmars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2016/02/16/angularjs-application/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/image/picture/avatar.jpg">
+      <meta itemprop="name" content="Russell Mars">
+      <meta itemprop="description" content="世界很美，而你正好有空！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二十几岁的你">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          angularjs 应用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-02-16 13:58:56" itemprop="dateCreated datePublished" datetime="2016-02-16T13:58:56+08:00">2016-02-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-27 15:58:00" itemprop="dateModified" datetime="2020-12-27T15:58:00+08:00">2020-12-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近一直在接触angularjs框架，也用这个东西做了一个项目出来，当然纯粹是赶鸭子上架给逼出来的，之前其实也只是接触过knockoutjs这类mvvm框架，以为同样是mvvm框架，上手起来会很快，结果各种踩坑，说多了都是泪。下面我带大家搞一个完整的angularjs项目，以供大家学习参考。</p>
+<a id="more"></a>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><h3 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h3><ul>
+<li>  JavaScript</li>
+<li>  html</li>
+<li>  angularjs</li>
+</ul>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ul>
+<li>  nodejs</li>
+<li>  git</li>
+<li>  yoeman</li>
+<li>  grunt</li>
+<li>  bower</li>
+<li>  编辑器（建议使用哪个sublime或者webstorm）</li>
+</ul>
+<p>上面说的这些东西都要了解下。</p>
+<h2 id="step-1"><a href="#step-1" class="headerlink" title="step 1"></a>step 1</h2><p>首先，需要安装nodejs环境，以及git，具体安装步骤这里不再详细叙述，网上有教程。安装以后需要安装一些npm模块，打开终端，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g grunt-cli bower yo generator-karma generator-angular</span><br></pre></td></tr></table></figure>
+<p>这样大部分的工具以及生成器就安装好了。</p>
+<h2 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h2><p>建立一个目录用于存放项目，并cd进入这个目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir pub &amp;&amp; cd pub</span><br></pre></td></tr></table></figure>
+<p>运行yo angular，生成我们项目原型框架，app-name是可选的，默认使用我们的根目录的名字，这个app-name会应用到整个项目中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo angular [app-name]</span><br></pre></td></tr></table></figure>
+<p>yoeman会询问我们几个问题，按照我们的实际需要填写就好了，就会帮我们生成项目的必须文件，并下载npm和bower依赖。等待一段时间就差不多了。<br>这样我们的项目框架就差不多搭建好了，可以在这个项目的代码中做我们的业务逻辑了。<br>现在我们运行<code>grunt serve</code>就能看到效果。</p>
+<h2 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h2><p>我们做项目时也可能会用到route,service，directive，controller，filter，view等，我们可以手动生成这些文件，然后将这些文件添加到index.html中，但是在生成器中这些东西都是可以帮我们自动生成的，并添加相应代码，我们只需要写逻辑就好了，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yo angular:route myroute</span><br><span class="line">yo angular:controller user</span><br><span class="line">yo angular:directive myDirective</span><br><span class="line">yo angular:filter myFilter</span><br><span class="line">yo angular:view user</span><br><span class="line">yo angular:service myService</span><br></pre></td></tr></table></figure>
+<h2 id="step4"><a href="#step4" class="headerlink" title="step4"></a>step4</h2><p>到现在我们的目录结构差不多是这个样子<img src="/image/2016/02/angularjs-application/project-structure.jpg" alt="project-structure"></p>
+<ol>
+<li>.tmp是临时文件夹，运行grunt serve时，会自动产生。</li>
+<li>app是我们主要关注的文件夹，里面都是我们自己需要些的文件。并且我们之后需要新增的文件几乎都这这个文件夹下。</li>
+<li>bower_components是项目bower依赖模块存放的目录。</li>
+<li>node_modules是项目npm依赖模块，主要是项目开发阶段中所需要的一些模块，打包是基本不会在了。</li>
+<li>test是测试文件的存放目录</li>
+<li>.bowerrc文件是bower的配置文件，这里配置了bower依赖的存放目录，如果需要手动生成这个文件需要用命令行工具</li>
+<li>.editorconfig是一个编辑器的配置文件，很多编辑器都支持这种配置，可以统一项目开发的代码格式化风格。</li>
+<li>bower.json是bower依赖的配置文件</li>
+<li>Gruntfile.json是grunt的配置文件，grunt的所有任务都在这里配置。</li>
+<li>package.json是项目的配置文件，nodejs相关。</li>
+</ol>
+<p>app目录下的文件如下<img src="/image/2016/02/angularjs-application/app-structure.jpg" alt="app-structure"><br>看名字基本都知道各个文件夹以及文件是干嘛的，index.html就是单页应用的那个单页，<br>基本上项目的目录结构都讲了。后面会将angularjs项目是怎么开发的。</p>
+<h2 id="step5"><a href="#step5" class="headerlink" title="step5"></a>step5</h2><p>单页应用中，页面的跳转是靠路由来控制，angularjs自带了路由功能，需添加路由模块ngRoute，在app.js中配置路由，项目依赖的模块建议最好在app.js中配置，其他的controller，service等中就可以忽略这个模块依赖参数了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/angularjs/" rel="tag"># angularjs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015/10/30/layout-exercise-01/" rel="prev" title="布局练习1">
+                  <i class="fa fa-chevron-left"></i> 布局练习1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/03/16/heroku-deploy/" rel="next" title="将应用部署到heroku中">
+                  将应用部署到heroku中 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Russell Mars</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

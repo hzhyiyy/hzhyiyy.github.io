@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="vagrant 的简单安装和使用，搭建开发和部署统一平台。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vagrant-starter">
+<meta property="og:url" content="http://example.com/2018/06/29/vagrant-starter/index.html">
+<meta property="og:site_name" content="二十几岁的你">
+<meta property="og:description" content="vagrant 的简单安装和使用，搭建开发和部署统一平台。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-29T12:18:33.000Z">
+<meta property="article:modified_time" content="2018-07-09T15:32:17.140Z">
+<meta property="article:author" content="Russell Mars">
+<meta property="article:tag" content="vagrant">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="开发环境">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2018/06/29/vagrant-starter/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>vagrant-starter | 二十几岁的你</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">二十几岁的你</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有梦想，何必远方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">2.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">相关配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">网络配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">共享目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thanks"><span class="nav-number">5.</span> <span class="nav-text">thanks</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Russell Mars"
+      src="/image/picture/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Russell Mars</p>
+  <div class="site-description" itemprop="description">世界很美，而你正好有空！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/russellmars" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;russellmars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/06/29/vagrant-starter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/image/picture/avatar.jpg">
+      <meta itemprop="name" content="Russell Mars">
+      <meta itemprop="description" content="世界很美，而你正好有空！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二十几岁的你">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vagrant-starter
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-06-29 20:18:33" itemprop="dateCreated datePublished" datetime="2018-06-29T20:18:33+08:00">2018-06-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2018-07-09 23:32:17" itemprop="dateModified" datetime="2018-07-09T23:32:17+08:00">2018-07-09</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>vagrant 的简单安装和使用，搭建开发和部署统一平台。</p>
+<a id="more"></a>
+
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p>下载安装<a target="_blank" rel="noopener" href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></p>
+</li>
+<li><p>下载安装<a target="_blank" rel="noopener" href="https://www.vagrantup.com/downloads.html">vagrant</a></p>
+</li>
+<li><p>下载<a target="_blank" rel="noopener" href="http://www.vagrantbox.es/">box</a>，我这里下载里一个<code>CentOS 7.0 x64</code>，要注意下载provider为VirtualBox的box，下载后，打开powershell/cmd，安装box </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vagrant box add [title] [url]</span></span><br><span class="line"><span class="comment"># title：box使用的使用的名字</span></span><br><span class="line"><span class="comment"># url为box的地址，可以是在线地址，也可以是本地的</span></span><br><span class="line">vagrant box add CentOS7.0_64 C:\Users\russellmars\Downloads\centos-7.0-x86_64.box</span><br></pre></td></tr></table></figure>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3></li>
+<li><p>新建一个目录，并初始化环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir hello</span><br><span class="line">cd hello</span><br><span class="line">vagrant init CentOS7.0_64</span><br></pre></td></tr></table></figure>
+<p>初始化成功后，该目录会出现一个<code>Vagrantfile</code>的配置文件，先用默认配置</p>
+</li>
+<li><p>启动box</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vagrant up</span><br></pre></td></tr></table></figure>
+<p>如果启动成功，则会出现如下信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Bringing machine &#39;default&#39; up with &#39;virtualbox&#39; provider...</span><br><span class="line">&#x3D;&#x3D;&gt; default: Clearing any previously set forwarded ports...</span><br><span class="line">&#x3D;&#x3D;&gt; default: Clearing any previously set network interfaces...</span><br><span class="line">&#x3D;&#x3D;&gt; default: Preparing network interfaces based on configuration...</span><br><span class="line">    default: Adapter 1: nat</span><br><span class="line">&#x3D;&#x3D;&gt; default: Forwarding ports...</span><br><span class="line">    default: 22 (guest) &#x3D;&gt; 2222 (host) (adapter 1)</span><br><span class="line">&#x3D;&#x3D;&gt; default: Booting VM...</span><br><span class="line">&#x3D;&#x3D;&gt; default: Waiting for machine to boot. This may take a few minutes...</span><br><span class="line">    default: SSH address: 127.0.0.1:2222</span><br><span class="line">    default: SSH username: vagrant</span><br><span class="line">    default: SSH auth method: private key</span><br><span class="line">&#x3D;&#x3D;&gt; default: Machine booted and ready!</span><br><span class="line">&#x3D;&#x3D;&gt; default: Checking for guest additions in VM...</span><br><span class="line">    default: The guest additions on this VM do not match the installed version of</span><br><span class="line">    default: VirtualBox! In most cases this is fine, but in rare cases it can</span><br><span class="line">    default: prevent things such as shared folders from working properly. If you see</span><br><span class="line">    default: shared folder errors, please make sure the guest additions within the</span><br><span class="line">    default: virtual machine match the version of VirtualBox you have installed on</span><br><span class="line">    default: your host and reload your VM.</span><br><span class="line">    default:</span><br><span class="line">    default: Guest Additions Version: 4.3.28</span><br><span class="line">    default: VirtualBox Version: 5.2</span><br><span class="line">&#x3D;&#x3D;&gt; default: Mounting shared folders...</span><br><span class="line">    default: &#x2F;vagrant &#x3D;&gt; D:&#x2F;database&#x2F;vagrant&#x2F;hello</span><br><span class="line">&#x3D;&#x3D;&gt; default: Machine already provisioned. Run &#96;vagrant provision&#96; or use the &#96;--provision&#96;</span><br><span class="line">&#x3D;&#x3D;&gt; default: flag to force provisioning. Provisioners marked to run always will still run.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>连接到远程linux，可以使用xshell或者win10 自带的OpenSSH客户端，账号密码默认为<code>vagrant</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh vagrant@127.0.0.1 -p 2222</span><br></pre></td></tr></table></figure>
+<p>启动以后，<code>hello</code>目录就与linux下的<code>/vagrant</code>目录下的文件双向同步了，可以新建几个文件测试一下</p>
+</li>
+<li><p>其他命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#关闭</span><br><span class="line">vagrant halt</span><br><span class="line">#重启</span><br><span class="line">vagrant reload</span><br></pre></td></tr></table></figure>
+<h3 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h3><h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4></li>
+<li><p>转发端口，将虚拟机的端口映射到主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080</span><br></pre></td></tr></table></figure>
+<p>以上是将虚拟机的80端口映射到主机的8080端口上</p>
+</li>
+<li><p>私有网络</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network &quot;private_network&quot;, ip: &quot;192.168.33.10&quot;</span><br></pre></td></tr></table></figure>
+<p>只有主机可以通过192.168.33.10来访问虚拟机</p>
+</li>
+<li><p>公共网络</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network &quot;public_network&quot;, ip: &quot;192.168.0.17&quot;</span><br></pre></td></tr></table></figure>
+<p>局域网内的成员可以通过192.168.33.10来访问虚拟机</p>
+</li>
+</ul>
+<h3 id="共享目录"><a href="#共享目录" class="headerlink" title="共享目录"></a>共享目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 添加新的共享文件夹</span><br><span class="line">config.vm.synced_folder &quot;src&#x2F;&quot;, &quot;&#x2F;srv&#x2F;website&quot;</span><br></pre></td></tr></table></figure>
+<p>第一个参数是主机上目录的路径。如果路径是相对的，则相对于项目根目录。第二个参数必须是访客机器中共享文件夹的绝对路径。如果该文件夹不存在，该文件夹将被创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 禁用默认的共享文件夹</span><br><span class="line">config.vm.synced_folder &quot;.&quot;, &quot;&#x2F;vagrant&quot;, disabled: true</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="thanks"><a href="#thanks" class="headerlink" title="thanks"></a>thanks</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.vagrantup.com/docs/">官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/vishun/archive/2017/06/02/6932454.html">windows下vagrant的安装使用</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vagrant/" rel="tag"># vagrant</a>
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="tag"># 开发环境</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/06/29/vue-issues/" rel="prev" title="vue 开发遇到的问题">
+                  <i class="fa fa-chevron-left"></i> vue 开发遇到的问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/06/30/nodejs-install/" rel="next" title="nodejs-install">
+                  nodejs-install <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Russell Mars</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>

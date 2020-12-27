@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="近段时间,由后端开发转到了前端开发,学了些html + css 布局的东西, 其中要说到居中的问题,居中分为水平居中和垂直居中.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html + css 布局-对齐与居中">
+<meta property="og:url" content="http://example.com/2015/10/29/layout-middle-center/index.html">
+<meta property="og:site_name" content="二十几岁的你">
+<meta property="og:description" content="近段时间,由后端开发转到了前端开发,学了些html + css 布局的东西, 其中要说到居中的问题,居中分为水平居中和垂直居中.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-10-29T09:22:05.000Z">
+<meta property="article:modified_time" content="2020-12-27T07:59:33.711Z">
+<meta property="article:author" content="Russell Mars">
+<meta property="article:tag" content="layout">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2015/10/29/layout-middle-center/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>html + css 布局-对齐与居中 | 二十几岁的你</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">二十几岁的你</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">没有梦想，何必远方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD"><span class="nav-number">1.</span> <span class="nav-text">水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD"><span class="nav-number">1.1.</span> <span class="nav-text">文字水平居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div%E5%B1%85%E4%B8%AD%E5%AF%B9%E9%BD%90"><span class="nav-number">1.2.</span> <span class="nav-text">div居中对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD"><span class="nav-number">2.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%A1%8C%E6%96%87%E5%AD%97%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD"><span class="nav-number">2.1.</span> <span class="nav-text">单行文字垂直居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E5%9B%BE%E7%89%871"><span class="nav-number">2.2.</span> <span class="nav-text">垂直居中图片1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E5%9B%BE%E7%89%872"><span class="nav-number">2.3.</span> <span class="nav-text">垂直居中图片2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div%E5%9C%A8%E7%88%B6%E5%AE%B9%E5%99%A8%E4%B8%AD%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD"><span class="nav-number">2.4.</span> <span class="nav-text">div在父容器中垂直居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div%E5%9C%A8%E8%A7%86%E5%8C%BA-%E5%B1%8F%E5%B9%95-%E5%86%85%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD"><span class="nav-number">2.5.</span> <span class="nav-text">div在视区(屏幕)内垂直居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div%E5%9C%A8%E7%88%B6%E5%AE%B9%E5%99%A8%E5%B1%85%E4%B8%AD%E9%AB%98%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94"><span class="nav-number">2.6.</span> <span class="nav-text">div在父容器居中高度自适应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div%E5%9C%A8%E7%88%B6%E5%AE%B9%E5%99%A8%E4%B8%AD%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD2"><span class="nav-number">2.7.</span> <span class="nav-text">div在父容器中垂直居中2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div%E5%9C%A8%E8%A7%86%E5%8C%BA-%E5%B1%8F%E5%B9%95-%E5%86%85%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD2"><span class="nav-number">2.8.</span> <span class="nav-text">div在视区(屏幕)内垂直居中2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#div%E5%9C%A8%E8%A7%86%E5%8C%BA-%E5%B1%8F%E5%B9%95-%E5%86%85%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD3"><span class="nav-number">2.9.</span> <span class="nav-text">div在视区(屏幕)内垂直居中3</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Russell Mars"
+      src="/image/picture/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Russell Mars</p>
+  <div class="site-description" itemprop="description">世界很美，而你正好有空！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/russellmars" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;russellmars" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2015/10/29/layout-middle-center/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/image/picture/avatar.jpg">
+      <meta itemprop="name" content="Russell Mars">
+      <meta itemprop="description" content="世界很美，而你正好有空！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二十几岁的你">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          html + css 布局-对齐与居中
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2015-10-29 17:22:05" itemprop="dateCreated datePublished" datetime="2015-10-29T17:22:05+08:00">2015-10-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-27 15:59:33" itemprop="dateModified" datetime="2020-12-27T15:59:33+08:00">2020-12-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/layout/" itemprop="url" rel="index"><span itemprop="name">layout</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>近段时间,由后端开发转到了前端开发,学了些html + css 布局的东西, 其中要说到居中的问题,居中分为水平居中和垂直居中.</p>
+<a id="more"></a>
+
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><p>水平居中相对比较简单.有两种方法可以实现</p>
+<h3 id="文字水平居中"><a href="#文字水平居中" class="headerlink" title="文字水平居中"></a>文字水平居中</h3><p>如果是一段文字需要水平居中的话,可以使用css 的text-align属性:取值有left/right/center, 分别代表左对齐,右对齐,居中对齐,如:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="comment">/* 居中对齐 */</span></span><br><span class="line">    <span class="attribute">text-align</span>:center</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="div居中对齐"><a href="#div居中对齐" class="headerlink" title="div居中对齐"></a>div居中对齐</h3><p>div的居中对齐也好做,只需设置一个div的左右margin 为auto即可,如</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>div的宽度是必须要设置的,如果不设置div默认是占整行宽度.</p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><p>垂直居中相对于水平居中来说会比较麻烦些, 总的来说有如下几种方法:</p>
+<h3 id="单行文字垂直居中"><a href="#单行文字垂直居中" class="headerlink" title="单行文字垂直居中"></a>单行文字垂直居中</h3><p>对于只有单行文字的内容, 需要将文字水平居中,可以使用line-height属性,将line-height属性设置成父容器的height值即可. 如果不设置文本的父容器高度,父容器的高度将会撑开到line-height的值.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* css *&#x2F;</span><br><span class="line">span &#123;</span><br><span class="line">    line-height: 400px;    </span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* html *&#x2F;</span><br><span class="line">&lt;span&gt;hello world&lt;&#x2F;span&gt;</span><br></pre></td></tr></table></figure>
+<p>文字hello world将在span里面居中对齐, 并且span的高度将撑开成400px.</p>
+<h3 id="垂直居中图片1"><a href="#垂直居中图片1" class="headerlink" title="垂直居中图片1"></a>垂直居中图片1</h3><p>垂直居中某一张图片可以在图片的前面加上一个span元素,并设置span元素的样式如下, 即可使图片居中.如果还需要将图片水平居中,可以设置box的line-height为box的高度即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* css *&#x2F;</span><br><span class="line">.box &#123;</span><br><span class="line">    width: 500px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    background-color: #aaaaaa;</span><br><span class="line">&#125;</span><br><span class="line">.box span &#123;</span><br><span class="line">    height: inherit;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    vertical-align: middle;   </span><br><span class="line">&#125;</span><br><span class="line">.box img &#123;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* html *&#x2F;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;&lt;span&gt;&lt;&#x2F;span&gt;&lt;img src&#x3D;&quot;hello.png&quot; alt&#x3D;&quot;hello&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="垂直居中图片2"><a href="#垂直居中图片2" class="headerlink" title="垂直居中图片2"></a>垂直居中图片2</h3><p>设置父容器的line-height的值为其height的值,并且设置img的vertical-align的值为middle即可.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* css *&#x2F;</span><br><span class="line">.box &#123;</span><br><span class="line">    width: 500px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    line-height: 300px;</span><br><span class="line">    background-color: #aaaaaa;</span><br><span class="line">&#125;</span><br><span class="line">.box img &#123;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* html *&#x2F;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;&lt;img src&#x3D;&quot;hello.png&quot; alt&#x3D;&quot;hello&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="div在父容器中垂直居中"><a href="#div在父容器中垂直居中" class="headerlink" title="div在父容器中垂直居中"></a>div在父容器中垂直居中</h3><p>设置父容器相对定位, 子容器的css代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    width:400px;</span><br><span class="line">    height: 400px;</span><br><span class="line">&#125;</span><br><span class="line">.sub &#123;</span><br><span class="line">    width: 50%;</span><br><span class="line">    height: 200px;</span><br><span class="line">    overflow: auto; &#x2F;&#x2F;内容高度超过容器高度显示滚动条</span><br><span class="line">    margin: auto;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="div在视区-屏幕-内垂直居中"><a href="#div在视区-屏幕-内垂直居中" class="headerlink" title="div在视区(屏幕)内垂直居中"></a>div在视区(屏幕)内垂直居中</h3><p>如果想要一个一直在屏幕的正中间,则可以使用如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    overflow: auto;</span><br><span class="line">    margin: auto;</span><br><span class="line">    position: fixed;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    z-index: 999;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="div在父容器居中高度自适应"><a href="#div在父容器居中高度自适应" class="headerlink" title="div在父容器居中高度自适应"></a>div在父容器居中高度自适应</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* css *&#x2F;</span><br><span class="line">.box &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    width:400px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background-color: #dd00dd;</span><br><span class="line">&#125;</span><br><span class="line">.sub &#123;</span><br><span class="line">    background-color: #dddddd;</span><br><span class="line">    width: 50%;</span><br><span class="line">    height:auto;</span><br><span class="line">    overflow: auto;</span><br><span class="line">    margin: auto;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    display: table;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* html *&#x2F;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;sub&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="div在父容器中垂直居中2"><a href="#div在父容器中垂直居中2" class="headerlink" title="div在父容器中垂直居中2"></a>div在父容器中垂直居中2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* css *&#x2F;</span><br><span class="line">.box &#123;</span><br><span class="line">    width:400px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background-color: #dd00dd;</span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.sub &#123;</span><br><span class="line">    background-color: #dddddd;</span><br><span class="line">    width: 300px;  </span><br><span class="line">    height: 200px;  </span><br><span class="line">    padding: 20px;  </span><br><span class="line">    position: absolute;  </span><br><span class="line">    top: 50%; </span><br><span class="line">    left: 50%;  </span><br><span class="line">    margin-left: -170px; &#x2F;* (width + padding)&#x2F;2 *&#x2F;  </span><br><span class="line">    margin-top: -120px; &#x2F;* (height + padding)&#x2F;2 *&#x2F;  </span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* html *&#x2F;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;sub&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="div在视区-屏幕-内垂直居中2"><a href="#div在视区-屏幕-内垂直居中2" class="headerlink" title="div在视区(屏幕)内垂直居中2"></a>div在视区(屏幕)内垂直居中2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* css *&#x2F;</span><br><span class="line">.box &#123;</span><br><span class="line">    background-color: #dddddd;</span><br><span class="line">    width: 300px;  </span><br><span class="line">    height: 200px;  </span><br><span class="line">    padding: 20px;  </span><br><span class="line">    position: absolute;  </span><br><span class="line">    top: 50%; </span><br><span class="line">    left: 50%;  </span><br><span class="line">    margin-left: -170px; &#x2F;* (width + padding)&#x2F;2 *&#x2F;  </span><br><span class="line">    margin-top: -120px; &#x2F;* (height + padding)&#x2F;2 *&#x2F;  </span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* html *&#x2F;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="div在视区-屏幕-内垂直居中3"><a href="#div在视区-屏幕-内垂直居中3" class="headerlink" title="div在视区(屏幕)内垂直居中3"></a>div在视区(屏幕)内垂直居中3</h3><p>利用css3的变形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* css *&#x2F;</span><br><span class="line">.box &#123;</span><br><span class="line">    background-color: #dddddd;</span><br><span class="line">    width: 50%;  </span><br><span class="line">    height:200px;</span><br><span class="line">    margin: auto;  </span><br><span class="line">    position: absolute;  </span><br><span class="line">    top: 50%; left: 50%;  </span><br><span class="line">    -webkit-transform: translate(-50%,-50%);  </span><br><span class="line">    -ms-transform: translate(-50%,-50%);  </span><br><span class="line">    transform: translate(-50%,-50%); </span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* html *&#x2F;</span><br><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/layout/" rel="tag"># layout</a>
+              <a href="/tags/html/" rel="tag"># html</a>
+              <a href="/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2015/09/28/ngrok-introduce/" rel="prev" title="ngrok，将本机ip映射成公网域名工具">
+                  <i class="fa fa-chevron-left"></i> ngrok，将本机ip映射成公网域名工具
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2015/10/30/layout-exercise-01/" rel="next" title="布局练习1">
+                  布局练习1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Russell Mars</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+</body>
+</html>
