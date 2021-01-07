@@ -142,7 +142,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a>
+    <a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">46</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -195,7 +195,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -274,10 +274,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-01-04 00:44:33 / 修改时间：01:10:14" itemprop="dateCreated datePublished" datetime="2021-01-04T00:44:33+08:00">2021-01-04</time>
+      <time title="创建时间：2021-01-04 00:44:33" itemprop="dateCreated datePublished" datetime="2021-01-04T00:44:33+08:00">2021-01-04</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
+      </span>
 
   
 </div>
@@ -295,6 +301,91 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
 <p>修改以后重新update一下</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/03/vscode-IntelliSense/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/image/picture/avatar.jpg">
+      <meta itemprop="name" content="Russell Mars">
+      <meta itemprop="description" content="世界很美，而你正好有空！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二十几岁的你">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/03/vscode-IntelliSense/" class="post-title-link" itemprop="url">vscode 里js代码智能提示</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-04 00:44:33" itemprop="dateCreated datePublished" datetime="2021-01-04T00:44:33+08:00">2021-01-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在编写代码时能获得智能提示是一件极其舒适以及富有安全感的事情，javascript的代码，在很多情况下都不能获得很友好的提示，故有了typescript，但是从javascript迁移代码到typescript中的代价比较大，所以js项目的开发过程中，总结了几种在vscode中获得代码智能提示的方法，以供大家参考。</p>
+<h2 id="模块使用"><a href="#模块使用" class="headerlink" title="模块使用"></a>模块使用</h2><p>使用npm模块时，一般的模块都会带有d.ts的类型文件描述，所以当模块引入进来以后，使用模块的时候都会带有相关接口或者属性的只能提示。<br>某些库如果没有d.ts文件的时候，可能需要安装类型文件 <code>@types/some-module</code>。</p>
+<h2 id="类型注释"><a href="#类型注释" class="headerlink" title="类型注释"></a>类型注释</h2><p>某些变量在开发过程中是可以确定变量类型的，所以可以在定义变量或者方法的时候添加js注释，以获得相关的代码提示，如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** <span class="doctag">@type <span class="type">&#123; HTMLCanvasElement &#125;</span> </span>*/</span></span><br><span class="line"><span class="keyword">const</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;tutorial&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** <span class="doctag">@type <span class="type">&#123; import(&quot;vuex/types&quot;).Module &#125;</span> </span>*/</span></span><br><span class="line"><span class="keyword">const</span> mod = &#123;</span><br><span class="line">  namespaced: <span class="literal">true</span>,</span><br><span class="line">  state: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>url </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Object&#125;</span> </span>data </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;Promise&lt;&#123; code: Number, message: String, data: Object &#125;</span></span>&gt;&#125; </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">baseRequest</span>(<span class="params">url, data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> axios(&#123; <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>, url, data &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然也可以提前定义类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@typedef <span class="type">&#123; import(&quot;vuex/types&quot;).Module &#125;</span> <span class="variable">Module</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// some code </span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** <span class="doctag">@type <span class="type">&#123; Module &#125;</span> </span>*/</span></span><br><span class="line"><span class="keyword">const</span> mod = &#123;</span><br><span class="line">  namespaced: <span class="literal">true</span>,</span><br><span class="line">  state: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="jsconfig的typeAcquisition"><a href="#jsconfig的typeAcquisition" class="headerlink" title="jsconfig的typeAcquisition"></a>jsconfig的typeAcquisition</h2><p>有些库可能是通过html的script标签直接引进进来的，然后会在代码里使用某个全局变量，这种情况下，想要或者这个全局变量的相关智能提示，可以使用<code>jsconfig.json</code>的<code>typeAcquisition</code>提供的功能，简单用法如下：<br>以<code>createjs</code>为例：<br>首先在html中引入了createjs的库</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- some code --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://code.createjs.com/1.0.0/createjs.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- some code --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后安装<code>createjs</code>的类型</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D @types/createjs</span><br></pre></td></tr></table></figure>
+<p>之后在项目的根目录下新建一个<code>jsconfig.json</code>文件，内容如下，当然还可以添加一下其他配置，这个配置文件很有用的</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;typeAcquisition&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;include&quot;</span>: [<span class="string">&quot;createjs&quot;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体代码使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> stage = <span class="keyword">new</span> createjs.Stage(<span class="string">&#x27;tutorial&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> circle = <span class="keyword">new</span> createjs.Graphics();</span><br><span class="line">circle.beginFill(<span class="string">&#x27;red&#x27;</span>);</span><br><span class="line">circle.drawCircle(<span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> shape = <span class="keyword">new</span> createjs.Shape(circle);</span><br><span class="line">stage.update();</span><br></pre></td></tr></table></figure>
+<p>当然这种方法的前提是有对应的类型文件，并且你知道类型文件中声明的<code>namespace</code>叫什么。</p>
+
       
     </div>
 
@@ -351,7 +442,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
       </span>
 
   
@@ -429,7 +520,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
       </span>
 
   
@@ -504,7 +595,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
       </span>
 
   
@@ -584,7 +675,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -667,7 +758,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
       </span>
 
   
@@ -755,7 +846,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
       </span>
 
   
@@ -826,7 +917,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
       </span>
 
   
@@ -900,7 +991,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
+        <time title="修改时间：2021-01-07 17:51:55" itemprop="dateModified" datetime="2021-01-07T17:51:55+08:00">2021-01-07</time>
       </span>
 
   
@@ -923,88 +1014,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/07/09/nodejs-debug/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/06/30/nodejs-install/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/image/picture/avatar.jpg">
-      <meta itemprop="name" content="Russell Mars">
-      <meta itemprop="description" content="世界很美，而你正好有空！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="二十几岁的你">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/06/30/nodejs-install/" class="post-title-link" itemprop="url">nodejs-install</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-06-30 22:12:07" itemprop="dateCreated datePublished" datetime="2018-06-30T22:12:07+08:00">2018-06-30</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-04 01:10:14" itemprop="dateModified" datetime="2021-01-04T01:10:14+08:00">2021-01-04</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>nodejs 的安装方法</p>
-<ul>
-<li>windows 安装</li>
-<li>linux 里的两种安装方式</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/06/30/nodejs-install/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
